@@ -89,4 +89,4 @@
 &nbsp;
 ![repo size](https://img.shields.io/github/repo-size/Devsgeeknerd/vue.js-front-end-zp?style=social "Tamanho do Repositório")
 &nbsp;
-![license](https://img.shields.io/github/license/Devsgeeknerd/vue.js-front-nd-zp?style=social "Licença do Repositório")
+![license](https://img.shields.io/github/license/Devsgeeknerd/vue.js-front-end-zp?style=social "Licença do Repositório")
