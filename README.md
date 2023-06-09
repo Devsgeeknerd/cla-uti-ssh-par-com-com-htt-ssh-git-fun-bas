@@ -11,10 +11,10 @@ Para isso, precisamos gerar as chaves SSH e adicioná-las ao nosso perfil do Git
     1.1. ssh-keygen -t rsa -b 4096 -C "<your_email@example.com>", onde você deve substituir o email e adicionar o utilizado no github.
 2. Após isso, será perguntado onde você deseja salvar a chave SSH.
     2.1. Neste ponto, pode clicar em "enter", o destino padrão já é suficiente.
-3. Feito isso, será solicitado uma chave secreta.
-  3.1. Esta chave é utilizada em conjunto com o hash para gerar sua chave SSH.
+3. Feito isso, será solicitado uma chave secreta:
+  3.1. Esta chave é utilizada em conjunto com o hash para gerar sua chave SSH;
   3.2. Pode adicionar qualquer frase (desde que você se lembre, haha).
-4. Com isso, sua chave foi gerada.
+4. Com isso, sua chave foi gerada:
   4.1. O próximo passo é adicioná-la ao nosso perfil do github
 
 Agora, com as chaves SSH geradas, vamos adicioná-la ao github.
