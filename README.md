@@ -5,62 +5,67 @@
 
 O processo de comunicação com o Github utilizando o SSH é mais complexo que utilizando HTTPS.
 
-Para isso, precisamos gerar as chaves SSH e adicioná-las ao nosso perfil do Github. Sendo assim, vamos ao passo-a-passo:
+Para isso, precisamos gerar as chaves SSH e adicioná-las ao nosso perfil do Github.
 
-1. Para gerar uma nova chave SSH, o primeiro passo é, no terminal (ou Git Bash) utilizar o seguinte comando:
-    1.1. ssh-keygen -t rsa -b 4096 -C "<your_email@example.com>", onde você deve substituir o email e adicionar o utilizado no github.
-2. Após isso, será perguntado onde você deseja salvar a chave SSH.
-    2.1. Neste ponto, pode clicar em "enter", o destino padrão já é suficiente.
-3. Feito isso, será solicitado uma chave secreta:
-   3.1. Esta chave é utilizada em conjunto com o hash para gerar sua chave SSH;
-   3.2. Pode adicionar qualquer frase (desde que você se lembre, haha).
-4. Com isso, sua chave foi gerada:
-   4.1. O próximo passo é adicioná-la ao nosso perfil do github
+* Sendo assim, vamos ao passo-a-passo:
 
-Agora, com as chaves SSH geradas, vamos adicioná-la ao github.
+  * Para gerar uma nova chave SSH, o primeiro passo é, no terminal (ou Git Bash) utilizar o seguinte comando:
+    * ssh-keygen -t rsa -b 4096 -C "<your_email@example.com>", onde você deve substituir o email e adicionar o utilizado no github.
 
-Para isso, vamos ao passo-a-passo:
+  * Após isso, será perguntado onde você deseja salvar a chave SSH.
+  * Neste ponto, pode clicar em "enter", o destino padrão já é suficiente.
+  * Feito isso, será solicitado uma chave secreta:
+    * Esta chave é utilizada em conjunto com o hash para gerar sua chave SSH;
+    * Pode adicionar qualquer frase (desde que você se lembre, haha).
+  * Com isso, sua chave foi gerada:
+    * O próximo passo é adicioná-la ao nosso perfil do github
 
-1. Ao realizar o login, vamos até a seguinte rota:
-  1.1 [settings/keys](https://github.com/settings/keys "Clique aqui")
-  1.2 Na página, clicamos em **“NEW SSH KEY”**.
-2. Agora, voltando ao terminal, precisamos copiar nossa chave gerada anteriormente.
-3. Caso você utilize o macOS, no terminal (ou git bash), digitamos o seguinte comando:
+  * Agora, com as chaves SSH geradas, vamos adicioná-la ao github.
+
+  * Para isso, vamos ao passo-a-passo:
+
+    * Ao realizar o login, vamos até a seguinte rota:
+      * [settings/keys](https://github.com/settings/keys "Clique aqui")
+      * Na página, clicamos em **“NEW SSH KEY”**.
+  * Agora, voltando ao terminal, precisamos copiar nossa chave gerada anteriormente.
+  * Caso você utilize o macOS, no terminal (ou git bash), digitamos o seguinte comando:
 
     ```powershell
     pbcopy < ~/.ssh/id_rsa.pub
     ```
 
-4. Caso você utilize o Windows, no gitbash, digitamos o seguinte comando:
+  * Caso você utilize o Windows, no gitbash, digitamos o seguinte comando:
 
     ```powershell
     clip < ~/.ssh/id_rsa.pub
     ```
 
-5. Caso você utilize o Linux, no terminal, digitamos os seguintes comandos:
+  * Caso você utilize o Linux, no terminal, digitamos os seguintes comandos:
 
     ```powershell
     sudo apt-get install xclip e xclip -sel clip < ~/.ssh/id_rsa.pub
     ```
 
-6. Feito isso, a chave ssh estará em nossa área de transferência.
-  6.1. Agora, voltamos à página aberta do Github [settings/keys](https://github.com/settings/keys) e colamos a chave, conforme a imagem abaixo:
+  * Feito isso, a chave ssh estará em nossa área de transferência.
+  * Agora, voltamos à página aberta do Github [settings/keys](https://github.com/settings/keys) e colamos a chave, conforme a imagem abaixo:
+
     ![Exemplo](https://d2v0x26thbzlwf.cloudfront.net/prod/527/img/rId15uih22wf4.enz.png)
-  6.2. Feito isso, já podemos salvar e a chave já está configurada.
 
-O último passo é testar a comunicação.
+  * Feito isso, já podemos salvar e a chave já está configurada.
 
-Para isso, no terminal (ou gitbash), utilizamos o seguinte comando:
+  * O último passo é testar a comunicação.
 
-```powershell
-ssh -T git@github.com.
-```
+  * Para isso, no terminal (ou gitbash), utilizamos o seguinte comando:
 
-Será solicitado que digitemos, então, a chave secreta que utilizamos ao criar a chave ssh no processo anterior.
+    ```powershell
+    ssh -T git@github.com.
+    ```
 
-Ao fazer isso, a comunicação será feita com sucesso e nossa chave estará configurada:
+  * Será solicitado que digitemos, então, a chave secreta que utilizamos ao criar a chave ssh no processo anterior.
 
-![Exemplo](https://d2v0x26thbzlwf.cloudfront.net/prod/527/img/rId17jbhg53xl.ocz.png)
+  * Ao fazer isso, a comunicação será feita com sucesso e nossa chave estará configurada:
+
+    ![Exemplo](https://d2v0x26thbzlwf.cloudfront.net/prod/527/img/rId17jbhg53xl.ocz.png)
 
 <!-- Informações -->
 ## &#8505; Informações
