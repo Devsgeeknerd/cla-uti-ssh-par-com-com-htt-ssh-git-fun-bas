@@ -1,92 +1,80 @@
-# VUE.JS
+<!-- Título -->
+# Utilizando SSH Para Comunicação
 
-***Aulas:***
+***Conteúdo da Aula:***
 
-- [ ] O que é e Como Usar?
-- [ ] Olá Mundo no Vue.js.
-- [ ] Condicionais e Loop.
-- [ ] Associação Bi-lateral (Receber Dados de Inputs).
-- [ ] Exercício — Soma.
-- [ ] Usando Métodos.
-- [ ] Controle de Flow (Parte 1).
-- [ ] Controle de Flow (Parte 2).
-- [ ] Components.
-- [ ] Ciclo de Vida.
-- [ ] Sintaxe de Template — Interpolações.
-- [ ] Sintaxe de Template — Directivas.
-- [ ] Sintaxe de Template — Atalhos de Directivas.
-- [ ] Exercício — Contatos (Fácil).
-- [ ] Propriedade Computada.
-- [ ] Computada em Método.
-- [ ] Watchers.
-- [ ] Watcher vs Computado.
-- [ ] Getter e Setter Computado.
-- [ ] Exercício — Contatos (Difícil).
-- [ ] Blind — Class.
-- [ ] Blind — Class com Prop Computada.
-- [ ] Blind — Inline.
-- [ ] Renderização Condicional.
-- [ ] Renderização de Lista.
-- [ ] Detecção de Mudança de Array.
-- [ ] Detecção de Mudança de Objeto
-- [ ] Exercício — Filtrando Resultado de Array.
-- [ ] Eventos de Cliques (Parte 1).
-- [ ] Eventos de Cliques (Parte 2).
-- [ ] Eventos de Teclado.
-- [ ] Eventos com CTRL, ALT, SHIFT e etc.
-- [ ] Eventos de Botões do Mouse.
-- [ ] Blinding — Formulários.
-- [ ] Blinding — Valores.
-- [ ] Blinding — Modificadores.
-- [ ] Criando os Próprios Componentes.
-- [ ] Componente com Ação Simples.
-- [ ] Componente Global vs Local.
-- [ ] Passando Props ao Componente.
-- [ ] Executando Funções Fora do Componente.
-- [ ] Exercício — To-do com Componente.
-- [ ] Resolução — To-do com Componente.
-- [ ] Exercício — Sinal de Trânsito.
-- [ ] Exercício — To-do com Busca.
-- [ ] Exercício — Feed do Instagram.
-- [ ] Exercício — Tabela com Edição via Modal.
-- [ ] Resolução — Sinal de Trânsito (Parte 1).
-- [ ] Resolução — Sinal de Trânsito (Parte 2).
-- [ ] Resolução — To-do com Busca (Parte 1).
-- [ ] Resolução — To-do com Busca (Parte 2).
-- [ ] Interpretando In-Browser vs Pré-compilado.
-- [ ] Projeto Pré-compilado (Parte 1).
-- [ ] Projeto Pré-compilado (Parte 2).
-- [ ] Instalando Servidor Local.
-- [ ] Router — Instalando e Configurando.
-- [ ] Router — Rota Simples.
-- [ ] Router — Rota Dinâmica.
-- [ ] Router — Rota 404.
-- [ ] Router — Rota Combinada.
-- [ ] Bundle Básico.
-- [ ] Requisição — Axios.
-- [ ] Projeto — Pegando o Preço do Bitcoin.
-- [ ] Requisição — Lista.
-- [ ] Requisição — Tratando Erros e Loading.
-- [ ] Requisição — POST com Dados.
-- [ ] Exercício — Exibindo os Filmes em Cartaz.
-- [ ] Exercício — Cadastro de Usuários.
-- [ ] Projeto — Sistema de Login (Parte 1).
-- [ ] Projeto — Sistema de Login (Parte 2).
-- [ ] Projeto — Sistema de Login (Parte 3).
-- [ ] Projeto — Sistema de Login (Parte 4).
+O processo de comunicação com o Github utilizando o SSH é mais complexo que utilizando HTTPS.
 
-## INFORMAÇÕES
+Para isso, precisamos gerar as chaves SSH e adicioná-las ao nosso perfil do Github. Sendo assim, vamos ao passo-a-passo:
 
-![visitors](https://visitor-badge.glitch.me/badge?page_id=Devsgeeknerd.vue.js-front-end-zp "Total de Visitas")
+1. Para gerar uma nova chave SSH, o primeiro passo é, no terminal (ou Git Bash) utilizar o seguinte comando:
+    1.1. ssh-keygen -t rsa -b 4096 -C "<your_email@example.com>", onde você deve substituir o email e adicionar o utilizado no github.
+2. Após isso, será perguntado onde você deseja salvar a chave SSH.
+    2.1. Neste ponto, pode clicar em "enter", o destino padrão já é suficiente.
+3. Feito isso, será solicitado uma chave secreta.
+  3.1. Esta chave é utilizada em conjunto com o hash para gerar sua chave SSH.
+  3.2. Pode adicionar qualquer frase (desde que você se lembre, haha).
+4. Com isso, sua chave foi gerada.
+  4.1. O próximo passo é adicioná-la ao nosso perfil do github
+
+Agora, com as chaves SSH geradas, vamos adicioná-la ao github.
+
+Para isso, vamos ao passo-a-passo:
+
+1. Ao realizar o login, vamos até a seguinte rota:
+  1.1 [settings/keys](https://github.com/settings/keys "Clique aqui")
+  1.2 Na página, clicamos em **“NEW SSH KEY”**.
+2. Agora, voltando ao terminal, precisamos copiar nossa chave gerada anteriormente.
+3. Caso você utilize o macOS, no terminal (ou git bash), digitamos o seguinte comando:
+
+    ```powershell
+    pbcopy < ~/.ssh/id_rsa.pub
+    ```
+
+4. Caso você utilize o Windows, no gitbash, digitamos o seguinte comando:
+
+    ```powershell
+    clip < ~/.ssh/id_rsa.pub
+    ```
+
+5. Caso você utilize o Linux, no terminal, digitamos os seguintes comandos:
+
+    ```powershell
+    sudo apt-get install xclip e xclip -sel clip < ~/.ssh/id_rsa.pub
+    ```
+
+6. Feito isso, a chave ssh estará em nossa área de transferência.
+  6.1. Agora, voltamos à página aberta do Github [settings/keys](https://github.com/settings/keys) e colamos a chave, conforme a imagem abaixo:
+    ![Exemplo](https://d2v0x26thbzlwf.cloudfront.net/prod/527/img/rId15uih22wf4.enz.png)
+  6.2. Feito isso, já podemos salvar e a chave já está configurada.
+
+O último passo é testar a comunicação.
+
+Para isso, no terminal (ou gitbash), utilizamos o seguinte comando:
+
+```powershell
+ssh -T git@github.com.
+```
+
+Será solicitado que digitemos, então, a chave secreta que utilizamos ao criar a chave ssh no processo anterior.
+
+Ao fazer isso, a comunicação será feita com sucesso e nossa chave estará configurada:
+
+![Exemplo](https://d2v0x26thbzlwf.cloudfront.net/prod/527/img/rId17jbhg53xl.ocz.png)
+
+<!-- Informações -->
+## &#8505; Informações
+
+![Visitors](https://api.visitorbadge.io/api/visitors?path=Devsgeeknerd%2Fcla-uti-ssh-par-com-com-htt-ssh-git-fun-bas&label=Visitantes&labelColor=%23700070&labelStyle=none&countColor=%23000fff&style=plastic&color=%23ffffff "Total de Visitantes")
 &nbsp;
-![followrs](https://img.shields.io/github/followers/Devsgeeknerd?style=social "Total de Seguidores")
+![Followers](https://img.shields.io/github/followers/Devsgeeknerd?style=p&label=Seguidores&labelColor=800080&color=000fff "Total de Seguidores")
 &nbsp;
-![watchers](https://img.shields.io/github/watchers/Devsgeeknerd/vue.js-front-end-zp?style=social "Total de Observadores")
+![Watchers](https://img.shields.io/github/watchers/Devsgeeknerd/cla-uti-ssh-par-com-com-htt-ssh-git-fun-bas?style=p&label=Observadores&labelColor=800080&color=000fff "Total de Observadores")
 &nbsp;
-![stars](https://img.shields.io/github/stars/Devsgeeknerd/vue.js-front-end-zp?style=social "Total de Estrelas Recebidas")
+![Stars](https://img.shields.io/github/stars/Devsgeeknerd/cla-uti-ssh-par-com-com-htt-ssh-git-fun-bas?style=p&label=Estrelas&labelColor=800080&color=000fff "Total de Estrelas")
 &nbsp;
-![forks](https://img.shields.io/github/forks/Devsgeeknerd/vue.js-front-end-zp?style=social "Total de Forks")
+![Forks](https://img.shields.io/github/forks/Devsgeeknerd/cla-uti-ssh-par-com-com-htt-ssh-git-fun-bas?style=p&label=Bifurcações&labelColor=800080&color=000fff "Total de Bifurcações")
 &nbsp;
-![repo size](https://img.shields.io/github/repo-size/Devsgeeknerd/vue.js-front-end-zp?style=social "Tamanho do Repositório")
+![Repo Size](https://img.shields.io/github/repo-size/Devsgeeknerd/cla-uti-ssh-par-com-com-htt-ssh-git-fun-bas?style=p&label=Tamanho&labelColor=800080&color=000fff "Tamanho do Repositório")
 &nbsp;
-![license](https://img.shields.io/github/license/Devsgeeknerd/vue.js-front-end-zp?style=social "Licença do Repositório")
+![License](https://img.shields.io/github/license/Devsgeeknerd/cla-uti-ssh-par-com-com-htt-ssh-git-fun-bas?style=p&label=Licença&labelColor=800080&color=000fff "Licença do Repositório")
